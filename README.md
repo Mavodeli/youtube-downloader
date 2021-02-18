@@ -7,4 +7,4 @@ Or simply download the whole thing here:
 https://www.dropbox.com/s/jr09qdej3vpslg0/youtube-downloader.zip?dl=1
 
 
-This is basically just an easy to use script of https://github.com/ytdl-org/youtube-dl
+This is basically just an ease of use script for https://github.com/ytdl-org/youtube-dl
