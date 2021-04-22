@@ -25,33 +25,16 @@ set /p extract="Generate mp3 files from video? (Y/N): "
 if "%extract%" == "y" goto :xtract
 if "%extract%" == "Y" goto :xtract
 
-set /p copyconvertscript="Copy .mkv to .mp4 converter script to target folder? (and keep ffmpeg.exe incase you dont have it in path) (Y/N): "
-
-if "%copyconvertscript%" == "y" goto :copyvscript
-if "%copyconvertscript%" == "Y" goto :copyvscript
-
-goto :nocopyvscript
-
-:copyvscript
-
-xcopy "%CD%\src\mkv-to-mp4.bat" "%CD%\%folder%"
-xcopy "%CD%\src\delete-convert-script.bat" "%CD%\%folder%"
-
-:nocopyvscript
-
 cd "%CD%"\"%folder%"
 
-youtube-dl.exe -i %url%
+youtube-dl.exe -i -f "mp4" --merge-output-format "mp4" %url%
 goto :end
 
 :xtract
 youtube-dl.exe -i -x --audio-format mp3 %url%
 
 :end
-if "%copyconvertscript%" == "y" goto :keepffmpeg
-if "%copyconvertscript%" == "Y" goto :keepffmpeg
 del "ffmpeg.exe"
-:keepffmpeg
 del "youtube-dl.exe"
 del "libcrypto-1_1.dll"
 del "libssl-1_1.dll"
