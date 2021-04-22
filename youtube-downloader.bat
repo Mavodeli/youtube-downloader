@@ -22,10 +22,10 @@ xcopy "%CD%\src\libssl-1_1.dll" "%CD%\%folder%"
 echo .
 set /p extract="Generate mp3 files from video? (Y/N): "
 
+cd "%CD%"\"%folder%"
+
 if "%extract%" == "y" goto :xtract
 if "%extract%" == "Y" goto :xtract
-
-cd "%CD%"\"%folder%"
 
 youtube-dl.exe -i -f "mp4" --merge-output-format "mp4" %url%
 goto :end
