@@ -14,7 +14,7 @@ echo Created Folder "%folder%"
 
 
 xcopy "%CD%\src\ffmpeg.exe" "%CD%\%folder%"
-xcopy "%CD%\src\youtube-dl.exe" "%CD%\%folder%"
+xcopy "%CD%\src\yt-dlp.exe" "%CD%\%folder%"
 xcopy "%CD%\src\libcrypto-1_1.dll" "%CD%\%folder%"
 xcopy "%CD%\src\libssl-1_1.dll" "%CD%\%folder%"
 
@@ -27,15 +27,15 @@ cd "%CD%"\"%folder%"
 if "%extract%" == "y" goto :xtract
 if "%extract%" == "Y" goto :xtract
 
-youtube-dl.exe -i -f "mp4" --merge-output-format "mp4" %url%
+yt-dlp.exe -i -f "mp4" --merge-output-format "mp4" %url%
 goto :end
 
 :xtract
-youtube-dl.exe -i -x --audio-format mp3 %url%
+yt-dlp.exe -i -x --audio-format mp3 %url%
 
 :end
 del "ffmpeg.exe"
-del "youtube-dl.exe"
+del "yt-dlp.exe"
 del "libcrypto-1_1.dll"
 del "libssl-1_1.dll"
 
