@@ -9,4 +9,4 @@ or this one:
 
 http://mavodeli.de/youtube-downloader/
 
-This is basically just an ease of use script for https://github.com/ytdl-org/youtube-dl
+This is basically just an ease of use script for https://github.com/yt-dlp/yt-dlp (used to be youtube-dl previously)
