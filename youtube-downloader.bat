@@ -18,7 +18,6 @@ xcopy "%CD%\src\yt-dlp.exe" "%CD%\%folder%"
 xcopy "%CD%\src\libcrypto-1_1.dll" "%CD%\%folder%"
 xcopy "%CD%\src\libssl-1_1.dll" "%CD%\%folder%"
 
-
 echo .
 set /p extract="Generate mp3 files from video? (Y/N): "
 
@@ -31,7 +30,22 @@ yt-dlp.exe -i -f "mp4" --merge-output-format "mp4" %url%
 goto :end
 
 :xtract
+
+set /p sep="Download first then convert all? (needs more space, but is faster for large playlists) (Y/N): "
+
+if "%sep%" == "y" goto :separate
+if "%sep%" == "Y" goto :separate
+
 yt-dlp.exe -i -x --audio-format mp3 %url%
+
+goto :end
+
+:separate
+
+yt-dlp.exe -i -f "mp4" --merge-output-format "mp4" %url%
+
+FOR /F "tokens=*" %%G IN ('dir /b *.mp4') DO ffmpeg -i "%%G" -acodec mp3 "%%~nG.mp3"
+FOR /F "tokens=*" %%G IN ('dir /b *.mp4') DO del "%%~nG.mp4"
 
 :end
 del "ffmpeg.exe"
