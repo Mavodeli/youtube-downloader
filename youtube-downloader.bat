@@ -31,10 +31,10 @@ goto :end
 
 :xtract
 
-set /p sep="Download first then extract mp3 files? (usually slower) (Y/N): "
+REM set /p sep="Download first then extract mp3 files? (usually slower) (Y/N): "
 
-if "%sep%" == "y" goto :separate
-if "%sep%" == "Y" goto :separate
+REM if "%sep%" == "y" goto :separate
+REM if "%sep%" == "Y" goto :separate
 
 yt-dlp.exe -i -x --audio-format mp3 %url%
 
