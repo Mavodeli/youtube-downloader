@@ -26,26 +26,12 @@ cd "%CD%"\"%folder%"
 if "%extract%" == "y" goto :xtract
 if "%extract%" == "Y" goto :xtract
 
-yt-dlp.exe -i -f "mp4" --merge-output-format "mp4" %url%
+yt-dlp.exe -i --recode-video "mp4" --merge-output-format "mp4" %url%
 goto :end
 
 :xtract
 
-REM set /p sep="Download first then extract mp3 files? (usually slower) (Y/N): "
-
-REM if "%sep%" == "y" goto :separate
-REM if "%sep%" == "Y" goto :separate
-
-yt-dlp.exe -i -x --audio-format mp3 %url%
-
-goto :end
-
-:separate
-
-yt-dlp.exe -i -f "mp4" --merge-output-format "mp4" %url%
-
-FOR /F "tokens=*" %%G IN ('dir /b *.mp4') DO ffmpeg -i "%%G" -acodec mp3 "%%~nG.mp3"
-FOR /F "tokens=*" %%G IN ('dir /b *.mp4') DO del "%%~nG.mp4"
+yt-dlp.exe -i -f bestaudio -x --audio-format mp3 %url%
 
 :end
 del "ffmpeg.exe"
