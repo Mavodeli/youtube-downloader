@@ -1,13 +1,18 @@
 # Youtube-Downloader
 a simple tool.
 
-You can download the release through github or this link:
+If you have git installed you can clone the repository using `git clone github.com/Mavodeli/Youtube-Downloader`. 
+Then you can use the file named "update using git pull" to update the tool. 
+
+You can also download it through the github release or one of these links:
 
 https://www.dropbox.com/s/jr09qdej3vpslg0/youtube-downloader.zip?dl=1
 
-or this one:
-
 http://mavodeli.de/youtube-downloader/
+
+with this you need to use "update using website" to update, which fails if my server is unavailable. 
+
+
 
 This is basically just an ease of use script for https://github.com/yt-dlp/yt-dlp (used to be youtube-dl previously)
 
