@@ -2,6 +2,7 @@
 a simple tool.
 
 If you have git installed you can clone the repository using `git clone github.com/Mavodeli/Youtube-Downloader`. 
+
 Then you can use the file named "update using git pull" to update the tool. 
 
 You can also download it through the github release or one of these links:
@@ -10,7 +11,7 @@ https://www.dropbox.com/s/jr09qdej3vpslg0/youtube-downloader.zip?dl=1
 
 http://mavodeli.de/youtube-downloader/
 
-with this you need to use "update using website" to update, which fails if my server is unavailable. 
+in this case you need to use "update using website" to update, which fails if my server is unavailable. 
 
 
 
