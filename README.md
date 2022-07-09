@@ -1,7 +1,9 @@
 # Youtube-Downloader
 a simple tool.
 
-If you have git installed you can clone the repository using `git clone https://github.com/Mavodeli/Youtube-Downloader`. 
+If you have git installed you can clone the repository using 
+
+`git clone https://github.com/Mavodeli/Youtube-Downloader`
 
 Then you can use the file named "update using git pull" to update the tool. 
 
