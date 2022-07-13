@@ -24,6 +24,5 @@ How to use:
 1. open youtube-downloader(.bat)
 2. paste target url
 3. Enter a folder name, this folder will be created and contain the downloaded videos after completion
-4. choose whether you want to extract the audio of the video(s). enter y or Y and press Enter to do so.  
-(default formats for audio/video are mp3/mp4)
-5. Upon completion press any button to exit.
+4. choose whether you want to extract the audio of the video(s). enter y or Y and press Enter to do so
+5. Upon completion press any button to exit
