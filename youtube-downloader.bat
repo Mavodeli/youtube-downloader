@@ -1,12 +1,11 @@
 @echo off
+:start
 set /p url="URL (playlist or single video): "
 
 echo:
-echo Make sure that the folder does not exist before running the script! 
+set /p folder="Name the folder you would like the playlist (or video) to be saved in: "
 
-set /p folder="Name of the folder you would like the playlist to be saved as: "
-
-if exist "%CD%"\"%folder%" echo "This folder already exists!" & Pause & exit
+if exist "%CD%"\"%folder%" call:confirmfolder
 
 echo:
 set /p extract="Extract mp3 (audio) files from video? (Y/N): "
@@ -16,7 +15,8 @@ if "%extract%" == "Y" goto :xtract
 
 echo:
 echo Try to remux all .webm files to .mp4?
-echo (If the best format for a video is not webm it will not be remuxed!)
+echo (If the best format is not .webm that video will not be remuxed)
+echo (This will affect ALL .webm files, careful with old folders!)
 set /p remux="(Y/N): "
 
 if "%remux%" == "y" goto :remux
@@ -48,8 +48,7 @@ pause
 exit
 
 :prep
-mkdir "%CD%"\"%folder%"
-echo Created Folder "%folder%"
+if not exist "%CD%"\"%folder%" mkdir "%CD%"\"%folder%" & echo Created Folder "%folder%"
 
 xcopy "%CD%\src\ffmpeg.exe" "%CD%\%folder%"
 xcopy "%CD%\src\yt-dlp.exe" "%CD%\%folder%"
@@ -59,3 +58,13 @@ xcopy "%CD%\src\libssl-1_1.dll" "%CD%\%folder%"
 cd "%CD%"\"%folder%"
 
 exit /b
+
+:confirmfolder
+echo:
+echo "This folder already exists. Use continue to update a playlist for example."
+set /p confirmed=" Continue in the specified folder? (Y/N): "
+
+if "%confirmed%" == "y" exit /b
+if "%confirmed%" == "Y" exit /b
+
+goto :start
