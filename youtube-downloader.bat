@@ -13,24 +13,8 @@ set /p extract="Extract mp3 (audio) files from video? (Y/N): "
 if "%extract%" == "y" goto :xtract
 if "%extract%" == "Y" goto :xtract
 
-echo:
-echo Try to remux all .webm files to .mp4?
-echo (If the best format is not .webm that video will not be remuxed)
-echo (This will affect ALL .webm files, careful with old folders!)
-set /p remux="(Y/N): "
-
-if "%remux%" == "y" goto :remux
-if "%remux%" == "Y" goto :remux
-
 call:prep
 yt-dlp.exe %url%
-goto :end
-
-:remux
-call:prep
-yt-dlp.exe %url%
-for /r %%v in (*.webm) do ffmpeg -i "%%v" -vcodec copy -acodec aac -movflags +faststart "%%~nv.mp4"
-for /r %%v in (*.webm) do del "%%v"
 goto :end
 
 :xtract
@@ -40,6 +24,7 @@ goto :end
 
 :end
 del "ffmpeg.exe"
+del "ffprobe.exe"
 del "yt-dlp.exe"
 del "libcrypto-1_1.dll"
 del "libssl-1_1.dll"
@@ -51,6 +36,7 @@ exit
 if not exist "%CD%"\"%folder%" mkdir "%CD%"\"%folder%" & echo Created Folder "%folder%"
 
 xcopy "%CD%\src\ffmpeg.exe" "%CD%\%folder%"
+xcopy "%CD%\src\ffprobe.exe" "%CD%\%folder%"
 xcopy "%CD%\src\yt-dlp.exe" "%CD%\%folder%"
 xcopy "%CD%\src\libcrypto-1_1.dll" "%CD%\%folder%"
 xcopy "%CD%\src\libssl-1_1.dll" "%CD%\%folder%"
