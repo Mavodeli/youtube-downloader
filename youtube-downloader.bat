@@ -13,7 +13,7 @@ setlocal EnableDelayedExpansion
 if exist "%CD%\%url%" (
     echo:
     echo "You input a local file. Try downloading each line in the file?"
-    set /p listfile="This will move the file into the target folder! (Y/N): "
+    set /p listfile="This will move the file into the target folder. (Y/N): "
 
     if "!listfile!" == "y" endlocal & call :downloadtextfile & goto :end
     if "!listfile!" == "Y" endlocal & call :downloadtextfile & goto :end
