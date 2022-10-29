@@ -72,9 +72,13 @@ if "%confirmed%" == "Y" exit /b
 goto :start
 
 :downloadtextfile
+echo:
+set /p extractfile="Extract mp3 (audio) files from video? (Y/N): "
 if not exist "%CD%"\"%folder%" mkdir "%CD%"\"%folder%" & echo Created Folder "%folder%"
 xcopy "%CD%\%url%" "%CD%\%folder%"
 del "%url%"
 call:prep
+if "%extractfile%" == "y" yt-dlp.exe -i -f bestaudio -x --audio-format mp3 -a %url% & exit /b
+if "%extractfile%" == "Y" yt-dlp.exe -i -f bestaudio -x --audio-format mp3 -a %url% & exit /b
 yt-dlp -a %url%
 exit /b
