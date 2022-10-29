@@ -5,7 +5,23 @@ set /p url="URL (playlist or single video): "
 echo:
 set /p folder="Name the folder you would like the playlist (or video) to be saved in: "
 
+@REM We check if the folder already exists
 if exist "%CD%"\"%folder%" call:confirmfolder
+
+@REM We check if the input is a local file
+setlocal EnableDelayedExpansion
+if exist "%CD%\%url%" (
+    echo:
+    echo "You input a local file. Try downloading each line in the file?"
+    set /p listfile="This will move the file into the target folder! (Y/N): "
+
+    if "!listfile!" == "y" endlocal & call :downloadtextfile & goto :end
+    if "!listfile!" == "Y" endlocal & call :downloadtextfile & goto :end
+
+    echo:
+    goto :start
+)
+endlocal
 
 echo:
 set /p extract="Extract mp3 (audio) files from video? (Y/N): "
@@ -54,3 +70,11 @@ if "%confirmed%" == "y" exit /b
 if "%confirmed%" == "Y" exit /b
 
 goto :start
+
+:downloadtextfile
+if not exist "%CD%"\"%folder%" mkdir "%CD%"\"%folder%" & echo Created Folder "%folder%"
+xcopy "%CD%\%url%" "%CD%\%folder%"
+del "%url%"
+call:prep
+yt-dlp -a %url%
+exit /b
