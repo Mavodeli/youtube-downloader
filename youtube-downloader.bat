@@ -1,4 +1,12 @@
 @echo off
+:init
+echo Attempting to update yt-dlp...
+echo:
+cd src
+yt-dlp.exe --update-to stable
+cd ..\
+echo:
+
 :start
 set /p url="URL (playlist or single video): "
 
@@ -12,8 +20,8 @@ if exist "%CD%"\"%folder%" call:confirmfolder
 setlocal EnableDelayedExpansion
 if exist "%CD%\%url%" (
     echo:
-    echo "You input a local file. Try downloading each line in the file?"
-    set /p listfile="This will move the file into the target folder. (Y/N): "
+    echo You input a local file. Try downloading each line in the file?
+    set /p listfile="This will move the file into the target folder! (Y/N): "
 
     if "!listfile!" == "y" endlocal & call :downloadtextfile & goto :end
     if "!listfile!" == "Y" endlocal & call :downloadtextfile & goto :end
@@ -63,12 +71,13 @@ exit /b
 
 :confirmfolder
 echo:
-echo "This folder already exists. Use continue to update a playlist for example."
+echo This folder already exists. Use continue to update a playlist for example.
 set /p confirmed=" Continue in the specified folder? (Y/N): "
 
 if "%confirmed%" == "y" exit /b
 if "%confirmed%" == "Y" exit /b
 
+echo:
 goto :start
 
 :downloadtextfile
