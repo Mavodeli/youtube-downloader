@@ -11,7 +11,7 @@ You can also download it through the github release or one of these links:
 
 https://www.dropbox.com/s/jr09qdej3vpslg0/youtube-downloader.zip?dl=1
 
-http://mavodeli.de/youtube-downloader/ 
+https://mavode.li/media/other/youtube-downloader.zip 
 
 You need to unpack the zip file to use the downloader. Also note that in this case you need to use "update using website" to update, which fails if my server is unavailable. 
 
