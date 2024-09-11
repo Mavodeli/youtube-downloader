@@ -1,26 +1,24 @@
 # Youtube-Downloader
 a simple tool.
 
+## Download
+
+Get the [latest release](https://github.com/Mavodeli/youtube-downloader/releases/latest) or download it through [my website](https://mavode.li/media/other/youtube-downloader.zip)
+
 If you have git installed you can clone the repository using 
 
 `git clone https://github.com/Mavodeli/Youtube-Downloader`
 
-Then you can use the file named "update using git pull" to update the tool. 
+## Updating
+The update script pulls the latest version from my website.
 
-You can also download it through the github release or one of these links:
+If you cloned the repository, simply `git pull` the latest commits. 
 
-https://www.dropbox.com/s/jr09qdej3vpslg0/youtube-downloader.zip?dl=1
+## About 
 
-https://mavode.li/media/other/youtube-downloader.zip 
+This is basically just an ease of use script for [yt-dlp](https://github.com/yt-dlp/yt-dlp)
 
-You need to unpack the zip file to use the downloader. Also note that in this case you need to use "update using website" to update, which fails if my server is unavailable. 
-
-
-
-This is basically just an ease of use script for https://github.com/yt-dlp/yt-dlp (used to be youtube-dl previously)
-
-
-How to use:
+## How to use:
 1. open youtube-downloader(.bat)
 2. paste target url (or name a file in this folder, that contains urls in separate lines)
 3. Enter a folder name, this folder will be created and contain the downloaded videos after completion
